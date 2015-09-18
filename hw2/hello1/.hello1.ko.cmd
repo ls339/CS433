@@ -1,1 +1,0 @@
-cmd_/home/lsoto/cs433/hw2/hello1/hello1.ko := ld -r -m elf_x86_64 -T /usr/src/kernels/3.10.0-229.11.1.el7.x86_64/scripts/module-common.lds --build-id  -o /home/lsoto/cs433/hw2/hello1/hello1.ko /home/lsoto/cs433/hw2/hello1/hello1.o /home/lsoto/cs433/hw2/hello1/hello1.mod.o
