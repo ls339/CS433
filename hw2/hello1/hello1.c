@@ -1,13 +1,16 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
+#include <linux/init.h>
 
-int init_module(void) {
+static int __init hello_init(void) {
 
-  printk(KERN_INFO "My Name: Loading Hello1 module - Hello World 1\n");
+  printk(KERN_INFO "My Name: Loading Hello1 module using macros - Hello World 1\n");
   return 0;
-
 }
 
-void cleanup_module(void) {
-  printk(KERN_INFO "My Name: Exiting Hello1 module - Goodbye World 1\n");
+static void __exit hello_exit(void) {
+  printk(KERN_INFO "My Name: Exiting Hello1 module using macros - Goodbye World 1\n");
 }
+
+module_init(hello_init);
+module_exit(hello_exit);
