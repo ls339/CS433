@@ -14,8 +14,8 @@ static inline char * sub_str(char * dest, char *src, int s_idx, int e_idx){
 static inline char * asm_sub_str(char * dest, char *src, int s_idx, int e_idx) {
   char buff[(e_idx-s_idx)];
   int d0, d1, d2;
-
   
+  /*
   asm volatile ("cld\n\t"
 		"rep\n\t"
 		"movsb"
@@ -23,16 +23,16 @@ static inline char * asm_sub_str(char * dest, char *src, int s_idx, int e_idx) {
 		: "c" (e_idx - s_idx + 1), "S" (src + s_idx), "D" (dest)
 		: "memory"
 		);
-  
-/*
-  __asm__ __volatile__ (   "1:\tlodsb\n\t"
+  */  
+
+  asm volatile (   "1:\tlodsb\n\t"
 		   "stosb\n\t"
 		   "testb %%al,%%al\n\t"
 		   "jne 1b"
-		 : "=&S" (d0), "=&D" (d1), "=&a" (d2)
+		   : "=&S" (d0), "=&D" (d1), "=&a" (d2)
 		 : "0" (src + s_idx),"1" (dest)
 		 : "memory");
-*/  
+
 /*
   __asm__ __volatile__( "cld\n\t"
 		 "rep\n\t"
