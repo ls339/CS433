@@ -3669,15 +3669,18 @@ static struct kmem_cache * __init bootstrap(struct kmem_cache *static_cache)
 // CS433 HW5
 static void print_kernel_cache_slubs(void);
 void print_kernel_cache_slubs(void) {
+  int i;
   struct kmem_cache *k;
-  k = kmalloc_caches[8];
-  printk(KERN_INFO "HW5 kmalloc_caches[8]->name  = %s\n",k->name);
-  printk(KERN_INFO "HW5 kmalloc_caches[8]->flags  = %ld\n",k->flags);
-  printk(KERN_INFO "HW5 kmalloc_caches[8]->offset  = %d\n",k->offset);
-  printk(KERN_INFO "HW5 kmalloc_caches[8]->size  = %d\n",k->size);
-  printk(KERN_INFO "HW5 kmalloc_caches[8]->reserved  = %d\n",k->reserved);
-
-  //printk(KERN_INFO "HW5 kmalloc_caches[0]->name  = %s\n",kmalloc_caches[0]->name);
+  
+  for(i=1;i<13;i++) {
+    k = kmalloc_caches[i];
+    printk(KERN_INFO "HW5 name = %s, num_objs  = %ld, objsize  = %d ",k->name,k->max.x,k->object_size);
+    //printk(KERN_INFO "HW5 active_obj  = %s",k->name);
+    //printk(KERN_INFO " num_objs  = %ld",k->max.x);
+    //printk(KERN_INFO " objsize  = %d",k->object_size);
+    //printk(KERN_INFO " nu  = %d",k->object_size);
+    //printk(KERN_INFO "\n");
+  }
 }
 
 void __init kmem_cache_init(void)
