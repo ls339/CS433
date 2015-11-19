@@ -3677,7 +3677,7 @@ void print_kernel_cache_slubs(void) {
   printk(KERN_INFO "HW5 kmalloc_caches[8]->size  = %d\n",k->size);
   printk(KERN_INFO "HW5 kmalloc_caches[8]->reserved  = %d\n",k->reserved);
 
-  printk(KERN_INFO "HW5 kmalloc_caches[0]->name  = %s\n",kmalloc_caches[0]->name);
+  //printk(KERN_INFO "HW5 kmalloc_caches[0]->name  = %s\n",kmalloc_caches[0]->name);
 }
 
 void __init kmem_cache_init(void)
